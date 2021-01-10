@@ -65,3 +65,4 @@ print(wh,'wh')
 print(btPrice,'€')
     
 time.sleep(10)
+print('quiting')
