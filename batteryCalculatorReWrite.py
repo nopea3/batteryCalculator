@@ -52,6 +52,11 @@ def calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, ce
     cellCount = cellsInParallel * cellsInSeries
     return w, wh, btPrice, btVoltage, btAmpH, cellCount
 
+def visual(x):
+    Bcell = x
+    voltage, amphours, maxCharge, amps, price = identifyCelltype(Bcell)
+    w, wh, btPrice, btVoltage, btAmpH, cellCount = calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel)
+
 
 Bcell, cellsInSeries, cellsInParallel = askForCellType()
 voltage, amphours, maxCharge, amps, price = identifyCelltype(Bcell)
@@ -65,4 +70,3 @@ print(wh,'wh')
 print(btPrice,'€')
     
 time.sleep(10)
-print('quiting')
