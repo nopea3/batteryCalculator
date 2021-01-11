@@ -3,8 +3,8 @@ import batteryCalculatorReWrite as bt
 
 
 
-def visualActivateQ30():
-    w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('q30', 20, 20)
+def visualActivateQ30(a, b):
+    w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('q30', a, b)
     print(btVoltage,'Voltage')
     print(btAmpH,'Amphours')
     print(cellCount, 'cells')
@@ -40,8 +40,8 @@ canvas1 = tk.Canvas(root, width = 400, height = 300)
 canvas1.grid()
 
 
-B = tk.Button(root, text='q30 kenno', command=visualActivateQ30())
-C = tk.Button(root, text='Lg mj1', command=visualActivateLgMj1())
+B = tk.Button(root, text='q30 kenno', command=visualActivateQ30)
+C = tk.Button(root, text='Lg mj1', command=visualActivateLgMj1)
 
 
 B.grid(row=1, column=1)
