@@ -17,7 +17,7 @@ def askForCellType():
     return name, series, parallel
 
 def identifyCelltype(Bcell):
-    if Bcell == 'q30' or '30q':
+    if Bcell == 'q30':
         voltage =  3.6
         amphours = 3.0
         maxCharge = 4.2
@@ -25,7 +25,7 @@ def identifyCelltype(Bcell):
         price = 3.75
         return voltage, amphours, maxCharge, amps, price
 
-    if Bcell == 'Lg mj1' or 'lg mj1':
+    if Bcell == 'Lg mj1':
         voltage =  3.63
         amphours =  3.5
         maxCharge =  3.5
@@ -52,21 +52,21 @@ def calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, ce
     cellCount = cellsInParallel * cellsInSeries
     return w, wh, btPrice, btVoltage, btAmpH, cellCount
 
-def visual(x):
+def visual(x, cellsInSeries, cellsInParallel):
     Bcell = x
     voltage, amphours, maxCharge, amps, price = identifyCelltype(Bcell)
     w, wh, btPrice, btVoltage, btAmpH, cellCount = calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel)
+    return w, wh, btPrice, btVoltage, btAmpH, cellCount
 
+#Bcell, cellsInSeries, cellsInParallel = askForCellType()
+#voltage, amphours, maxCharge, amps, price = identifyCelltype(Bcell)
+#w, wh, btPrice, btVoltage, btAmpH, cellCount = calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel)
 
-Bcell, cellsInSeries, cellsInParallel = askForCellType()
-voltage, amphours, maxCharge, amps, price = identifyCelltype(Bcell)
-w, wh, btPrice, btVoltage, btAmpH, cellCount = calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel)
+#print(btVoltage,'Voltage')
+#print(btAmpH,'Amphours')
+#print(cellCount, 'cells')
+#print(w,'w')
+#print(wh,'wh')
+#print(btPrice,'€')
 
-print(btVoltage,'Voltage')
-print(btAmpH,'Amphours')
-print(cellCount, 'cells')
-print(w,'w')
-print(wh,'wh')
-print(btPrice,'€')
-    
-time.sleep(10)
+#time.sleep(10)
