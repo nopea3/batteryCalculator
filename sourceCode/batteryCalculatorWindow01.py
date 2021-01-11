@@ -12,7 +12,7 @@ def visualActivateQ30(a,b):
     print(btPrice,'€')
     print('q30')
 
-print('')
+
 def visualActivateLgMj1():
     w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('Lg mj1', 20, 20)
     print(btVoltage,'Voltage')
