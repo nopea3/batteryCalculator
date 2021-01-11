@@ -3,8 +3,8 @@ import batteryCalculatorReWrite as bt
 
 
 
-def visualActivateQ30():
-    w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('q30', 20, 20)
+def visualActivateQ30(a,b):
+    w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('q30', a, b)
     print(btVoltage,'Voltage')
     print(btAmpH,'Amphours')
     print(cellCount, 'cells')
@@ -13,8 +13,8 @@ def visualActivateQ30():
     print(btPrice,'€')
     print('q30')
 
-def visualActivateLgMj1():
-    w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('Lg mj1', 20, 20)
+def visualActivateLgMj1(a,b):
+    w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('Lg mj1', a,b)
     print(btVoltage,'Voltage')
     print(btAmpH,'Amphours')
     print(cellCount, 'cells')
@@ -41,8 +41,15 @@ canvas1.grid()
 centry1 = tk.Entry(root)
 canvas1.create_window(200, 140, window=entry1)
 
-B = tk.Button(root, text='q30 kenno', command=visualActivateQ30)
-C = tk.Button(root, text='Lg mj1', command=visualActivateLgMj1)
+a = tk.Label(root, text='montako kennoa pistetään Sarjaan')
+canvas1.create_window(200, 230, window=a)
+#a.grid(row=5, column= 5)
+b = tk.Label(root, text='montako kennoa pistetään Rinnakkain')
+canvas1.create_window(200, 250, window=b)
+#b.grid(row=5, column= 6)
+
+B = tk.Button(root, text='q30 kenno', command=visualActivateQ30(10,10))
+C = tk.Button(root, text='Lg mj1', command=visualActivateLgMj1(10,10))
 #B = tk.Button(root, text='Custom', command=visualActivateCustom)
 
 
