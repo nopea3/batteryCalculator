@@ -2,7 +2,7 @@ import tkinter as tk
 
 root= tk.Tk()
 
-canvas1 = tk.Canvas(root, width = 400, height = 300,  relief = 'raised')
+#canvas1 = tk.Canvas(root, width = 400, height = 300,  relief = 'raised')
 canvas1.pack()
 
 label1 = tk.Label(root, text='Calculate the Square Root')

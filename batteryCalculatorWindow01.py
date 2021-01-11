@@ -41,12 +41,15 @@ canvas1.grid()
 centry1 = tk.Entry(root)
 canvas1.create_window(200, 140, window=entry1)
 
-a = tk.Label(root, text='montako kennoa pistetään Sarjaan')
-canvas1.create_window(200, 230, window=a)
+entry1 = tk.Label(root, height=160, width=160, text='montako kennoa pistetään Sarjaan')
+entry1 = tk.Entry (root)
+canvas1.create_window(200, 160, window=entry1)
 #a.grid(row=5, column= 5)
-b = tk.Label(root, text='montako kennoa pistetään Rinnakkain')
-canvas1.create_window(200, 250, window=b)
-#b.grid(row=5, column= 6)
+b = tk.Label(root, height=160, width=140, text='montako kennoa pistetään Rinnakkain')
+b = tk.Entry (root)
+canvas1.create_window(200, 140, window=b)
+
+
 
 B = tk.Button(root, text='q30 kenno', command=visualActivateQ30(10,10))
 C = tk.Button(root, text='Lg mj1', command=visualActivateLgMj1(10,10))
