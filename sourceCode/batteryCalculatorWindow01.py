@@ -2,7 +2,9 @@ import tkinter as tk
 import batteryCalculatorReWrite as bt
 
 
-def visualActivateQ30(a,b):
+def visualActivateQ30():
+    global a
+    global b
     w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('q30', a, b)
     print(btVoltage,'Voltage')
     print(btAmpH,'Amphours')
@@ -32,10 +34,13 @@ def visualActivateCustom():
     print(wh,'wh')
     print(btPrice,'€')
 
+
 def sendData():
-    a = e1.get()
-    b = e2.get()
-    return a, b
+    a1 = e1.get()
+    b2 = e2.get()
+    return a1, b2
+
+a, b = sendData()
 
 root = tk.Tk()
 entry1 = tk.Entry()
