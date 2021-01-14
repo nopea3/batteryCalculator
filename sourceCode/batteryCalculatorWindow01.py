@@ -8,7 +8,7 @@ def visualActivateQ30():
 
     a = float(e1.get())
     b = float(e2.get())
-    
+
     w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('q30', a, b)
     print(btVoltage,'Voltage')
     print(btAmpH,'Amphours')
@@ -55,21 +55,16 @@ tk.Label(root, text="Montako kennoa rinnan").grid(row=1)
 e2 = tk.Entry(root)
 e2.grid(row=1, column=1)
 
-def sendData():
-    a1 = e1.get()
-    b2 = e2.get()
-    return a1, b2
-
 
 B = tk.Button(root, text='q30 kenno', command=visualActivateQ30)
 C = tk.Button(root, text='Lg mj1', command=visualActivateLgMj1)
-F = tk.Button(root, text='Send values', command= sendData)
+#F = tk.Button(root, text='Send values', command= sendData)
 
-a, b = sendData()
+
 
 B.grid(row=3, column=1)
 C.grid(row=4, column=1)
-F.grid(row=5, column=1)
+#F.grid(row=5, column=1)
 
 
 
