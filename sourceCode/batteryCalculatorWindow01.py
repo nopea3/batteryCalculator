@@ -17,10 +17,15 @@ def visualActivateQ30():
     print(wh,'wh')
     print(btPrice,'€')
     print('q30')
+    print('')
+    print('')
 
 
 def visualActivateLgMj1():
-    w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('Lg mj1', 20, 20)
+    a = float(e1.get())
+    b = float(e2.get())
+
+    w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('Lg mj1', a, b)
     print(btVoltage,'Voltage')
     print(btAmpH,'Amphours')
     print(cellCount, 'cells')
@@ -28,6 +33,8 @@ def visualActivateLgMj1():
     print(wh,'wh')
     print(btPrice,'€')
     print('Lg mj1')
+    print('')
+    print('')
 
 def visualActivateCustom():
     w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('Custom', 20, 20)
@@ -44,7 +51,7 @@ root = tk.Tk()
 entry1 = tk.Entry()
 
 
-canvas1 = tk.Canvas(root, width = 400, height = 300)
+canvas1 = tk.Canvas(root, width = 200, height = 150)
 canvas1.grid()
 
 tk.Label(root, text="Montako kennoa sarjaan").grid(row=0)
