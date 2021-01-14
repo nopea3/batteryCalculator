@@ -61,7 +61,6 @@ C = tk.Button(root, text='Lg mj1', command=visualActivateLgMj1)
 #F = tk.Button(root, text='Send values', command= sendData)
 
 
-
 B.grid(row=3, column=1)
 C.grid(row=4, column=1)
 #F.grid(row=5, column=1)
