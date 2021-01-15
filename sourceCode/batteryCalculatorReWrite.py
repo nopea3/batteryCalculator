@@ -34,11 +34,14 @@ def identifyCelltype(Bcell):
         return voltage, amphours, maxCharge, amps, price
 
     if Bcell == 'custom':
-        voltage = int(input('voltage '))
-        amphours = int(input('amphours '))
-        maxCharge = int(input('maxCharge (voltage) '))
-        amps = int(input('amps '))
-        price = int(input('price '))
+        voltage = float(input('voltage '))
+        amphours = float(input('amphours '))
+        maxCharge = float(input('maxCharge (voltage) '))
+        amps = float(input('amps '))
+        price = float(input('price '))
+        
+        #print(voltage, amphours, maxCharge, amps, price)
+
         return voltage, amphours, maxCharge, amps, price
 
     
@@ -62,11 +65,5 @@ def visual(x, cellsInSeries, cellsInParallel):
 #voltage, amphours, maxCharge, amps, price = identifyCelltype(Bcell)
 #w, wh, btPrice, btVoltage, btAmpH, cellCount = calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel)
 
-#print(btVoltage,'Voltage')
-#print(btAmpH,'Amphours')
-#print(cellCount, 'cells')
-#print(w,'w')
-#print(wh,'wh')
-#print(btPrice,'€')
 
 #time.sleep(10)
