@@ -1,8 +1,8 @@
 import time
 import requests
 
-response = requests.get('https://www.nkon.nl/lg-inr18650-mj1.html')
-print(response.json)
+#response = requests.get('https://www.nkon.nl/lg-inr18650-mj1.html')
+#print(response.)
 
 def askForCellType():
     name = input('Minkä kennon haluat ')
