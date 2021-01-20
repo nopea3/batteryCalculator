@@ -1,8 +1,16 @@
 import time
 import requests
+from bs4 import BeautifulSoup
 
-#response = requests.get('https://www.nkon.nl/lg-inr18650-mj1.html')
-#print(response.json)
+
+import urllib.request
+
+with urllib.request.urlopen("https://www.nkon.nl/products/4x-varta-aaa-industrial.html") as url:
+    s = url.read()
+    soup = BeautifulSoup(page.content, 'html.parser')
+    soup.find_all('p', class_='price')
+    print(s)
+
 
 def askForCellType():
     name = input('Minkä kennon haluat ')
