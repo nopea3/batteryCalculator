@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 import batteryCalculatorReWrite as bt
 
 
@@ -10,15 +11,8 @@ def visualActivateQ30():
     b = float(e2.get())
 
     w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('q30', a, b)
-    print(btVoltage,'Voltage')
-    print(btAmpH,'Amphours')
-    print(cellCount, 'cells')
-    print(w,'w')
-    print(wh,'wh')
-    print(btPrice,'€')
-    print('q30')
-    print('')
-    print('')
+    messageValues = [ 'Voltage', btVoltage, '\n' ,  'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'q30']
+    tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
 
 
 def visualActivateLgMj1():
@@ -26,15 +20,8 @@ def visualActivateLgMj1():
     b = float(e2.get())
 
     w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('Lg mj1', a, b)
-    print(btVoltage,'Voltage')
-    print(btAmpH,'Amphours')
-    print(cellCount, 'cells')
-    print(w,'w')
-    print(wh,'wh')
-    print(btPrice,'€')
-    print('Lg mj1')
-    print('')
-    print('')
+    messageValues = [ 'Voltage', btVoltage, '\n' ,  'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'Lg mj1']
+    tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
 
 def visualActivateCustom():
     canvasCustom = tk.Canvas(root, width= 200, height=200)
@@ -43,16 +30,8 @@ def visualActivateCustom():
 
     w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('custom', a, b)
 
-    print(btVoltage,'Voltage')
-    print(btAmpH,'Amphours')
-    print(cellCount, 'cells')
-    print(w,'w')
-    print(wh,'wh')
-    print(btPrice,'€')
-    print('Custom kenno')
-    print('')
-    print('')
-
+    messageValues = [ 'Voltage', btVoltage, '\n' ,  'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'Custom']
+    tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
 
 root = tk.Tk()
 entry1 = tk.Entry()
