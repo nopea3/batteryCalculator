@@ -1,4 +1,5 @@
 import time
+import tkinter as tk
 import requests
 from bs4 import BeautifulSoup
 from html.parser import HTMLParser
@@ -48,6 +49,16 @@ def identifyCelltype(Bcell):
         return voltage, amphours, maxCharge, amps, price
 
     if Bcell == 'custom':
+        root = tk.Tk()
+        entry1 = tk.Entry()
+        root.title('Custom cell data')
+        canvas1 = tk.Canvas(root, width = 200, height = 150)
+        canvas1.grid()
+        tk.Label(root, text="Voltage").grid(row=0)
+        e1 = tk.Entry(root)
+        e1.grid(row=0, column=1)
+
+        root.mainloop()
         voltage = float(input('voltage '))
         amphours = float(input('amphours '))
         maxCharge = float(input('maxCharge (voltage) '))
@@ -62,22 +73,23 @@ def identifyCelltype(Bcell):
 
 def calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel):
     wh = voltage * cellsInSeries * amphours * cellsInParallel
-    w = voltage * cellsInSeries * amps
+    voltageBig = voltage * cellsInSeries
+    ampsBig = amps * cellsInParallel
+    w = voltageBig * ampsBig
     btPrice = price * cellsInSeries * cellsInParallel
     btVoltage = voltage * cellsInSeries
     btAmpH = amphours * cellsInParallel
     cellCount = cellsInParallel * cellsInSeries
-    return w, wh, btPrice, btVoltage, btAmpH, cellCount
+    return w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig
 
 def visual(x, cellsInSeries, cellsInParallel):
     Bcell = x
     voltage, amphours, maxCharge, amps, price = identifyCelltype(Bcell)
-    w, wh, btPrice, btVoltage, btAmpH, cellCount = calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel)
-    return w, wh, btPrice, btVoltage, btAmpH, cellCount
+    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig = calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel)
+    return w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig
 
 #Bcell, cellsInSeries, cellsInParallel = askForCellType()
 #voltage, amphours, maxCharge, amps, price = identifyCelltype(Bcell)
 #w, wh, btPrice, btVoltage, btAmpH, cellCount = calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel)
-
 
 #time.sleep(10)

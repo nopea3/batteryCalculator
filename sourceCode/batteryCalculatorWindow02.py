@@ -1,17 +1,15 @@
 import tkinter as tk
 from tkinter import messagebox
-import batteryCalculatorReWrite as bt
+import batteryCalculatorReWrite01 as bt
 
 
 def visualActivateQ30():
-    #a = int(input('Serial'))
-    # = int(input('Paralell'))
 
     a = float(e1.get())
     b = float(e2.get())
 
-    w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('q30', a, b)
-    messageValues = [ 'Voltage', btVoltage, '\n' ,  'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'q30']
+    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig = bt.visual('q30', a, b)
+    messageValues = [ 'Voltage', btVoltage, '\n', 'Amps', ampsBig, '\n', 'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'q30']
     tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
 
 
@@ -19,8 +17,8 @@ def visualActivateLgMj1():
     a = float(e1.get())
     b = float(e2.get())
 
-    w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('Lg mj1', a, b)
-    messageValues = [ 'Voltage', btVoltage, '\n' ,  'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'Lg mj1']
+    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig = bt.visual('Lg mj1', a, b)
+    messageValues = [ 'Voltage', btVoltage, '\n' , 'Amps', ampsBig, '\n',  'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'Lg mj1']
     tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
 
 def visualActivateCustom():
@@ -28,9 +26,9 @@ def visualActivateCustom():
     a = float(e1.get())
     b = float(e2.get())
 
-    w, wh, btPrice, btVoltage, btAmpH, cellCount = bt.visual('custom', a, b)
+    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig = bt.visual('custom', a, b)
 
-    messageValues = [ 'Voltage', btVoltage, '\n' ,  'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'Custom']
+    messageValues = [ 'Voltage', btVoltage, '\n' , 'Amps', ampsBig, '\n', 'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'Custom']
     tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
 
 root = tk.Tk()
@@ -38,7 +36,7 @@ entry1 = tk.Entry()
 root.title('Battery Calculator')
 
 
-canvas1 = tk.Canvas(root, width = 200, height = 150)
+canvas1 = tk.Canvas(root, width = 200, height = 200)
 
 canvas1.grid()
 
