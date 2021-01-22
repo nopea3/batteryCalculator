@@ -70,7 +70,6 @@ def identifyCelltype(Bcell):
         tk.Label(root, text="Price").grid(row=3)
         e4 = tk.Entry(root)
         e4.grid(row=3, column=1)
-        root.mainloop()
         def sendData():
             voltage = float(e1.get())
             amphours = float(e2.get())
@@ -78,8 +77,12 @@ def identifyCelltype(Bcell):
             amps = float(e3.get())
             price = float(e4.get())
             return voltage, amphours, maxCharge, amps, price
+        tk.Button(root, text="Quit", command=root.quit).grid(row=4, column=1)
+        root.mainloop()
         voltage, amphours, maxCharge, amps, price = sendData()
+        root.destroy()
         return voltage, amphours, maxCharge, amps, price
+        
     
 
     
@@ -98,7 +101,7 @@ def calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, ce
 def visual(x, cellsInSeries, cellsInParallel):
     Bcell = x
     voltage, amphours, maxCharge, amps, price = identifyCelltype(Bcell)
-    
+
     w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig = calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel)
     return w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig
 
