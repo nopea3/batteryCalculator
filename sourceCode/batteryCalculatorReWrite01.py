@@ -1,12 +1,12 @@
 import time
 import tkinter as tk
-import requests
-from bs4 import BeautifulSoup
-from html.parser import HTMLParser
-import html.parser
+#import requests
+#from bs4 import BeautifulSoup
+#from html.parser import HTMLParser
+#import html.parser
 
 
-import urllib.request
+#import urllib.request
 
 #with urllib.request.urlopen("https://www.nkon.nl/products/4x-varta-aaa-industrial.html") as url:
 #    s = url.read()
