@@ -38,7 +38,8 @@ def identifyCelltype(Bcell):
         maxCharge = 4.2
         amps = 20.0
         price = 3.75
-        return voltage, amphours, maxCharge, amps, price
+        batteryCycle = 300
+        return voltage, amphours, maxCharge, amps, price, batteryCycle
 
     if Bcell == 'Lg mj1':
         voltage =  3.63
@@ -46,7 +47,8 @@ def identifyCelltype(Bcell):
         maxCharge =  3.5
         amps = 10
         price = 3.45
-        return voltage, amphours, maxCharge, amps, price
+        batteryCycle = 400
+        return voltage, amphours, maxCharge, amps, price, batteryCycle
 
     if Bcell == 'custom':
 
@@ -70,23 +72,27 @@ def identifyCelltype(Bcell):
         tk.Label(root, text="Price").grid(row=3)
         e4 = tk.Entry(root)
         e4.grid(row=3, column=1)
+
+        tk.Label(root, text='Battery cycles').grid(row=4)
+        e5 = tk.Entry(root)
+        e5.grid(row=4, column=1)
+
         def sendData():
             voltage = float(e1.get())
             amphours = float(e2.get())
             maxCharge = float(e1.get())
             amps = float(e3.get())
             price = float(e4.get())
-            return voltage, amphours, maxCharge, amps, price
-        tk.Button(root, text="Quit", command=root.quit).grid(row=4, column=1)
+            batteryCycles = float(e5.get())
+            return voltage, amphours, maxCharge, amps, price, batteryCycles
+
+        tk.Button(root, text="Quit", command=root.quit).grid(row=5, column=1)
         root.mainloop()
         voltage, amphours, maxCharge, amps, price = sendData()
         root.destroy()
         return voltage, amphours, maxCharge, amps, price
         
     
-
-    
-
 def calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel):
     wh = voltage * cellsInSeries * amphours * cellsInParallel
     voltageBig = voltage * cellsInSeries
@@ -98,10 +104,9 @@ def calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, ce
     cellCount = cellsInParallel * cellsInSeries
     return w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig
 
-def visual(x, cellsInSeries, cellsInParallel):
-    Bcell = x
-    voltage, amphours, maxCharge, amps, price = identifyCelltype(Bcell)
+def visual(Bcell, cellsInSeries, cellsInParallel):
+    voltage, amphours, maxCharge, amps, price, batteryCycles = identifyCelltype(Bcell)
 
     w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig = calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel)
-    return w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig
+    return w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, batteryCycles
 
