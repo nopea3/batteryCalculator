@@ -88,9 +88,9 @@ def identifyCelltype(Bcell):
 
         tk.Button(root, text="Quit", command=root.quit).grid(row=5, column=1)
         root.mainloop()
-        voltage, amphours, maxCharge, amps, price = sendData()
+        voltage, amphours, maxCharge, amps, price, batteryCycles = sendData()
         root.destroy()
-        return voltage, amphours, maxCharge, amps, price
+        return voltage, amphours, maxCharge, amps, price, batteryCycles 
         
     
 def calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel):

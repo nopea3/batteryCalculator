@@ -38,7 +38,7 @@ def identifyCelltype(Bcell):
         maxCharge = 4.2
         amps = 20.0
         price = 3.75
-        batteryCycle = 400
+        batteryCycle = 300
         return voltage, amphours, maxCharge, amps, price, batteryCycle
 
     if Bcell == 'Lg mj1':
@@ -88,9 +88,9 @@ def identifyCelltype(Bcell):
 
         tk.Button(root, text="Quit", command=root.quit).grid(row=5, column=1)
         root.mainloop()
-        voltage, amphours, maxCharge, amps, price = sendData()
+        voltage, amphours, maxCharge, amps, price, batteryCycles = sendData()
         root.destroy()
-        return voltage, amphours, maxCharge, amps, price
+        return voltage, amphours, maxCharge, amps, pricee, batteryCycles 
         
     
 def calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel):

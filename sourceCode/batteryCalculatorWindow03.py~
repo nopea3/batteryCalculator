@@ -4,7 +4,7 @@ import batteryCalculatorReWrite01 as bt
 
 
 def visualActivateQ30():
-
+    
     a = float(e1.get())
     b = float(e2.get())
 
@@ -32,10 +32,43 @@ def visualActivateCustom():
     tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
 
 
-def collectVoltValues():
-    batteryVoltage = v1.float(get())
-    batteryAmphours = a1.folat(get())  
-    return batteryVoltage, batteryAmphours
+#under me is the volt/amph askers
+
+def SvisualActivateQ30(devideVoltage, v, devideAmph, s):
+    a = v/devideVoltage
+    b = s/devideAmph
+    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, cycles = bt.visual('q30', a, b)
+    messageValues = [ 'Voltage', btVoltage, '\n', 'Amps', ampsBig, '\n', 'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'q30', '\n', 'Battery cycles', cycles]
+    tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
+
+
+def SvisualActivateLgMj1(devideVoltage, v, devideAmph, s):
+    a = v/devideVoltage
+    b = s/devideAmph
+
+    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, cycles = bt.visual('Lg mj1', a, b)
+    messageValues = [ 'Voltage', btVoltage, '\n' , 'Amps', ampsBig, '\n',  'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'Lg mj1', '\n', 'Battery cycles', cycles]
+    tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
+
+def SvisualActivateCustom(batteryVoltage, batteryAmphours):
+    voltage, amphours, maxCharge, amps, price, cellCycles = bt.identifyCelltype('custom')
+    cellsInSeries = batteryVoltage / voltage
+    cellsInParallel = batteryAmphours / amphours
+    wh = voltage * cellsInSeries * amphours * cellsInParallel
+    voltageBig = voltage * cellsInSeries
+    ampsBig = amps * cellsInParallel
+    w = voltageBig * ampsBig
+    btPrice = price * cellsInSeries * cellsInParallel
+    btVoltage = voltage * cellsInSeries
+    btAmpH = amphours * cellsInParallel
+    cellCount = cellsInParallel * cellsInSeries
+
+    canvasCustom = tk.Canvas(root, width= 200, height=200)
+
+    messageValues = [ 'Voltage', btVoltage, '\n' , 'Amps', ampsBig, '\n', 'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'Custom', '\n', 'Battery cycles', cellCycles]
+    tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
+
+
 
 def askForValues():
     root = tk.Tk()
@@ -52,11 +85,27 @@ def askForValues():
     a1.grid(row=1, column=1)
 
 
-    s = tk.Button(root, text='Ok', command=root.quit())
+    s = tk.Button(root, text='Ok', command=root.quit)
     s.grid(row=3, column=1)
    
     root.mainloop()
-    batteryVoltage, batteryAmphours = collectVoltValues()
+    batteryVoltage = float(v1.get())
+    batteryAmphours = float(a1.get())
+    root.destroy()
+
+    root = tk.Tk()
+    entry1 = tk.Entry()
+    root.title('What cells do you want to use')
+    canvas6 = tk.Canvas(root, width = 400, height = 100)
+    canvas6.grid()
+
+    B = tk.Button(root, text='q30 kenno', command=lambda: SvisualActivateQ30(3.6, batteryVoltage, 3.0, batteryAmphours))
+    C = tk.Button(root, text='Lg mj1 kenno', command=lambda: SvisualActivateLgMj1(3.63, batteryVoltage, 3.5, batteryAmphours))
+    F = tk.Button(root, text='Custom kenno', command=lambda: [SvisualActivateCustom(batteryVoltage, batteryAmphours), root.quit])
+    
+    B.grid(row=3, column=1)
+    C.grid(row=4, column=1)
+    F.grid(row=5, column=1)
     return batteryVoltage, batteryAmphours
 
 
