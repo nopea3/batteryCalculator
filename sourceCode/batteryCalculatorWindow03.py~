@@ -101,7 +101,7 @@ def askForValues():
 
     B = tk.Button(root, text='q30 kenno', command=lambda: SvisualActivateQ30(3.6, batteryVoltage, 3.0, batteryAmphours))
     C = tk.Button(root, text='Lg mj1 kenno', command=lambda: SvisualActivateLgMj1(3.63, batteryVoltage, 3.5, batteryAmphours))
-    F = tk.Button(root, text='Custom kenno', command=lambda: [SvisualActivateCustom(batteryVoltage, batteryAmphours), root.quit])
+    F = tk.Button(root, text='Custom kenno', command=lambda: [SvisualActivateCustom(batteryVoltage, batteryAmphours), root.destroy()])
     
     B.grid(row=3, column=1)
     C.grid(row=4, column=1)
