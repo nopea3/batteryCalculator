@@ -8,8 +8,8 @@ def visualActivateQ30():
     a = float(e1.get())
     b = float(e2.get())
 
-    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, cycles = bt.visual('q30', a, b)
-    messageValues = [ 'Voltage', btVoltage, '\n', 'Amps', ampsBig, '\n', 'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'q30', '\n', 'Battery cycles', cycles]
+    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, cycles, area, btWeight = bt.visual('q30', a, b)
+    messageValues = [ 'Voltage', btVoltage, '\n', 'Amps', ampsBig, '\n', 'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'q30', '\n', 'Battery cycles', cycles, '\n', 'Experimental battery area calc (mm^2)', area, '\n', 'Battery btWeight', btWeight]
     tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
 
 
@@ -17,8 +17,8 @@ def visualActivateLgMj1():
     a = float(e1.get())
     b = float(e2.get())
 
-    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, cycles = bt.visual('Lg mj1', a, b)
-    messageValues = [ 'Voltage', btVoltage, '\n' , 'Amps', ampsBig, '\n',  'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'Lg mj1', '\n', 'Battery cycles', cycles]
+    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, cycles, area, btWeight = bt.visual('q30', a, b)
+    messageValues = [ 'Voltage', btVoltage, '\n', 'Amps', ampsBig, '\n', 'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'q30', '\n', 'Battery cycles', cycles, '\n', 'Experimental battery area calc (mm^2)', area, '\n', 'Battery btWeight', btWeight]
     tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
 
 def visualActivateCustom():
@@ -26,9 +26,8 @@ def visualActivateCustom():
     a = float(e1.get())
     b = float(e2.get())
 
-    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, cycles = bt.visual('custom', a, b)
-
-    messageValues = [ 'Voltage', btVoltage, '\n' , 'Amps', ampsBig, '\n', 'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'Custom', '\n', 'Battery cycles', cycles]
+    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, cycles, area, btWeight = bt.visual('custom', a, b)
+    messageValues = [ 'Voltage', btVoltage, '\n', 'Amps', ampsBig, '\n', 'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'q30', '\n', 'Battery cycles', cycles, '\n', 'Experimental battery area calc (mm^2)', area, '\n', 'Battery btWeight', btWeight]
     tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
 
 
@@ -37,21 +36,20 @@ def visualActivateCustom():
 def SvisualActivateQ30(devideVoltage, v, devideAmph, s):
     a = v/devideVoltage
     b = s/devideAmph
-    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, cycles = bt.visual('q30', a, b)
-    messageValues = [ 'Voltage', btVoltage, '\n', 'Amps', ampsBig, '\n', 'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'q30', '\n', 'Battery cycles', cycles]
+    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, cycles, area, btWeight   = bt.visual('q30', a, b)
+    messageValues = [ 'Voltage', btVoltage, '\n', 'Amps', ampsBig, '\n', 'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'q30', '\n', 'Battery cycles', cycles, '\n', 'Experimental battery area calc (mm^2)', area, '\n', 'Battery btWeight', btWeight]
     tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
 
 
 def SvisualActivateLgMj1(devideVoltage, v, devideAmph, s):
     a = v/devideVoltage
     b = s/devideAmph
-
-    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, cycles = bt.visual('Lg mj1', a, b)
-    messageValues = [ 'Voltage', btVoltage, '\n' , 'Amps', ampsBig, '\n',  'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'Lg mj1', '\n', 'Battery cycles', cycles]
+    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, cycles, area, btWeight   = bt.visual('q30', a, b)
+    messageValues = [ 'Voltage', btVoltage, '\n', 'Amps', ampsBig, '\n', 'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'Lg mj1', '\n', 'Battery cycles', cycles, '\n', 'Experimental battery area calc (mm^2)', area, '\n', 'Battery btWeight', btWeight]
     tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
 
 def SvisualActivateCustom(batteryVoltage, batteryAmphours):
-    voltage, amphours, maxCharge, amps, price, cellCycles = bt.identifyCelltype('custom')
+    voltage, amphours, maxCharge, amps, price, batteryCycle, diameter, length, weight= bt.identifyCelltype('custom')
     cellsInSeries = batteryVoltage / voltage
     cellsInParallel = batteryAmphours / amphours
     wh = voltage * cellsInSeries * amphours * cellsInParallel
@@ -65,7 +63,7 @@ def SvisualActivateCustom(batteryVoltage, batteryAmphours):
 
     canvasCustom = tk.Canvas(root, width= 200, height=200)
 
-    messageValues = [ 'Voltage', btVoltage, '\n' , 'Amps', ampsBig, '\n', 'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'Custom', '\n', 'Battery cycles', cellCycles]
+    messageValues = [ 'Voltage', btVoltage, '\n' , 'Amps', ampsBig, '\n',  'Amphours', btAmpH, '\n', 'Cells', cellCount, '\n', 'w', w, '\n', wh, 'wh', '\n', 'cost', btPrice, '\n', 'Cells Used', 'Custom', '\n', 'Battery cycles', cycles]
     tk.messagebox.showinfo(title= 'Your battery data', message = messageValues)
 
 

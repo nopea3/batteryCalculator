@@ -1,5 +1,6 @@
 import time
 import tkinter as tk
+import math
 #import requests
 #from bs4 import BeautifulSoup
 #from html.parser import HTMLParser
@@ -39,7 +40,10 @@ def identifyCelltype(Bcell):
         amps = 20.0
         price = 3.75
         batteryCycle = 300
-        return voltage, amphours, maxCharge, amps, price, batteryCycle
+        diameter = 18
+        cellLength = 65
+        weight = 48
+        return voltage, amphours, maxCharge, amps, price, batteryCycle, diameter, cellLength, weight
 
     if Bcell == 'Lg mj1':
         voltage =  3.63
@@ -48,7 +52,9 @@ def identifyCelltype(Bcell):
         amps = 10
         price = 3.45
         batteryCycle = 400
-        return voltage, amphours, maxCharge, amps, price, batteryCycle
+        diameter = 18.3
+        weight = 48
+        return voltage, amphours, maxCharge, amps, price, batteryCycle, diameter, cellLength, weight
 
     if Bcell == 'custom':
 
@@ -77,6 +83,18 @@ def identifyCelltype(Bcell):
         e5 = tk.Entry(root)
         e5.grid(row=4, column=1)
 
+        tk.Label(root, text='Cell diameter').grid(row=5)
+        e6 = tk.Entry(root)
+        e6.grid(row=5, column=1)
+
+        tk.Label(root, text='Cell cellLength').grid(row=6)
+        e7 = tk.Entry(root)
+        e7.grid(row=6, column=1)
+
+        tk.Label(root, text='Cell weight').grid(row=7)
+        e8 = tk.Entry(root)
+        e8.grid(row=7, column=1)
+
         def sendData():
             voltage = float(e1.get())
             amphours = float(e2.get())
@@ -84,16 +102,20 @@ def identifyCelltype(Bcell):
             amps = float(e3.get())
             price = float(e4.get())
             batteryCycles = float(e5.get())
-            return voltage, amphours, maxCharge, amps, price, batteryCycles
+            diameter = float(e6.get())
+            cellLength = float(e7.get())
+            weight = float(e8.get())
+            return voltage, amphours, maxCharge, amps, price, batteryCycles, diameter, cellLength, weight
 
-        tk.Button(root, text="Quit", command=root.quit).grid(row=5, column=1)
+        tk.Button(root, text="Quit", command=root.quit).grid(row=8, column=1)
         root.mainloop()
-        voltage, amphours, maxCharge, amps, price, batteryCycles = sendData()
+        voltage, amphours, maxCharge, amps, price, batteryCycles, diameter, cellLength, weight = sendData()
+
         root.destroy()
-        return voltage, amphours, maxCharge, amps, price, batteryCycles 
+        return voltage, amphours, maxCharge, amps, price, batteryCycles, diameter, cellLength, weight 
         
     
-def calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel):
+def calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel, diameter, cellLength, weight):
     wh = voltage * cellsInSeries * amphours * cellsInParallel
     voltageBig = voltage * cellsInSeries
     ampsBig = amps * cellsInParallel
@@ -102,11 +124,13 @@ def calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, ce
     btVoltage = voltage * cellsInSeries
     btAmpH = amphours * cellsInParallel
     cellCount = cellsInParallel * cellsInSeries
-    return w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig
+    space = diameter * math.pi * cellLength * cellCount
+    btWeight = cellCount * weight
+    return w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, space, btWeight
 
 def visual(Bcell, cellsInSeries, cellsInParallel):
-    voltage, amphours, maxCharge, amps, price, batteryCycles = identifyCelltype(Bcell)
+    voltage, amphours, maxCharge, amps, price, batteryCycles, diameter, cellLength, weight = identifyCelltype(Bcell)
 
-    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig = calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel)
-    return w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, batteryCycles
+    w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, space, btWeigth = calculatePrices(voltage, amphours, maxCharge, amps, price, cellsInSeries, cellsInParallel, diameter, cellLength, weight)
+    return w, wh, btPrice, btVoltage, btAmpH, cellCount, ampsBig, batteryCycles, space, btWeigth
 
